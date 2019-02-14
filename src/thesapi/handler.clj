@@ -8,10 +8,7 @@
 
 (defroutes app-routes
   (GET "/" [] (views/home-page))
-  (GET "/lettercount/:word" word (views/lettercountfn word))
-  ;;(GET "/" [] "Hello World")
   (GET "/synonyms/:word" [word] (views/findsynonyms word))
-  (GET "/printing/:op" [op] (views/printing op))
   (route/not-found "Not Found"))
 
 (def app
