@@ -7,19 +7,16 @@
 
 (defn home-page
   []
-  "HEllo World")
+  "Hello World, This is the home-page!"
 
 (defn findsynonyms
   [word]
   (with-open [dict (io/reader "newdict.csv")]
     (let [dictionary         (doall (csv/read-csv dict))
           dictionary-as-sets (map #(into #{} (str/split (first %) #",")) dictionary)
-          _                  (println (first dictionary-as-sets))
-          _                  (println "contains? word ... " ((first dictionary-as-sets) "come,advance,approach,arrive,near,reach"))
           result             (filter #(% word) dictionary-as-sets)
-          _                  (prn "RESULT IS = " result)
           result-as-str      (reduce (fn [acc curr]
-                                       (str acc " " curr))
+                                       (str acc ", " curr))
                                      ""
                                      result)]
       {:status  200
